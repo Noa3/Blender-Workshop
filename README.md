@@ -30,6 +30,8 @@ hermes skills tap add Noa3/Blender-Workshop
 hermes skills search blender-workshop --source github
 ```
 
-Adding the tap is optional. If search does not return the skill yet, the exact install command above still works. You can also read the [field cards](skills/blender-workshop/references/field-cards.md) on GitHub without using Hermes.
+Adding the tap is optional. If search does not return the skill yet, the exact install command above still works. The skill also has a [public listing on skills.sh](https://skills.sh/noa3/blender-workshop/blender-workshop).
+
+You can read the [field cards](skills/blender-workshop/references/field-cards.md) on GitHub without using Hermes.
 
 Original workshop by Noa3. [MIT license](skills/blender-workshop/references/LICENSE.md).
