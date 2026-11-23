@@ -1,6 +1,6 @@
 # Blender Workshop for Hermes Agent
 
-Model, shade, animate, and verify Blender scenes. Blender Workshop gives Hermes ten field cards for modeling, materials, Geometry Nodes, rigging, rendering, and more. Each card gives you a next action, a concrete check, and what to try if the check fails.
+Model, shade, animate, and verify Blender scenes. Start with ten field cards for choosing a next action, then use the workshop library for detailed workflows, source notes, and reproducible checks.
 
 [Install and try it](#install-and-try-it) · [See the Blender showcase](#blender-showcase)
 
@@ -21,11 +21,18 @@ Review the source and the install prompt. In a new Hermes chat, try:
 
 Expected: choose `procedural`, preview the placement mask before instancing, and check that it excludes the path but includes the planting bed. This is guidance, not a verified Blender edit.
 
-The skill is a text workflow guide. Reading it does not require Blender, and installation adds no Blender add-on, scripts, or scenes. Check the version and render engine when applying steps to your scene.
+### What's included
+
+- A [workshop library](skills/blender-workshop/references/workshop-index.md) with workflows for modeling, texturing and UVs, Geometry Nodes, animation, rigging, rendering, and delivery.
+- A [production atlas](skills/blender-workshop/references/production-atlas.md) with checks for specific subjects, plus an offline topic finder that runs on standard Python.
+- The [creator notebook](skills/blender-workshop/references/channel-register.md), [video study notes](skills/blender-workshop/references/video-study-notes-01.md), and source links. The notes distinguish narration, sampled previews, written descriptions, and original workshop experiments.
+- [Optional local lab scripts](skills/blender-workshop/references/portable-use.md) you can run separately with Blender, including a build-and-check exercise for the Tide Register gauge.
+
+**No `.blend` scenes are downloaded or installed.** The skill contains documentation, reference data, and Python source. It installs no Blender add-on and runs no lab automatically. Optional labs create their fixtures locally when you run them, rather than fetching project files. The preview images below stay in the repository, outside the skill download.
 
 ## Blender showcase
 
-Three original workshop stills rendered in Blender Cycles. They illustrate the kinds of work the field cards guide; the skill download itself contains only the guide.
+Three original workshop stills rendered in Blender Cycles. They illustrate the techniques covered by the guide; the editable scenes are not part of the public release.
 
 ### Night Current — Jellyfish
 

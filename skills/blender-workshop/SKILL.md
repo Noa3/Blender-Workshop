@@ -1,7 +1,7 @@
 ---
 name: blender-workshop
 description: Use for Blender scene work. Model, shade, animate, verify.
-version: 1.0.0
+version: 1.1.0
 author: Noa3
 license: MIT
 metadata:
@@ -32,4 +32,21 @@ Pick the check that is most likely to fail, then open the matching card in [Blen
 
 Example: if Geometry Nodes plants appear on a path, use `procedural`. Preview the allowed-region mask before instancing. It should be false on the path and true in the planting bed. A seed change alone is not a fix.
 
-No Blender installation or plugin is required to read the cards. Check names and render-engine behavior against the user's Blender version. Original workshop by Noa3. [License](references/LICENSE.md).
+## Open just the chapter you need
+
+Use the [workshop library](references/workshop-index.md) to choose a chapter. For a specific subject, start with the [production atlas](references/production-atlas.md), or run the optional [offline topic finder](scripts/workshop.py) as `python3 scripts/workshop.py subject horse` from the skill directory. It prints the relevant chapter and its acceptance check. If the host opens a full volume, use the named section rather than treating all of it as instructions for the shot.
+
+- **Model, scene and game:** [modeling and made objects](references/modeling.md), [architecture and Geometry Nodes](references/spaces.md), [living worlds and creatures](references/living-worlds.md), [game assets and retro looks](references/game-assets.md).
+- **Surface, light and production:** [materials, UVs and optical surfaces](references/materials.md), [lighting and render diagnostics](references/lighting.md), [cinema, effects and delivery](references/production.md).
+- **Motion and character:** [animation and cloth](references/motion.md), [anatomy, rigging and contact](references/figure-workflows.md), [character looks and grooming](references/character-surfaces.md), [morphs and deformation](references/deformation.md).
+- **Evidence:** [lab notebook](references/lab-notebook.md), [Lumen Quay case study](references/channel-workshop.md), [video, course and book studies](references/learning-notebook.md), [creator register](references/channel-register.md), [creator notes 1](references/creator-notes-01.md), [2](references/creator-notes-02.md), [3](references/creator-notes-03.md), [4](references/creator-notes-04.md), [video study notes 1](references/video-study-notes-01.md), [2](references/video-study-notes-02.md), and [sources](references/sources.md). Distinguish what the creator showed from what the workshop measured. A title, a sampled image and a replayable test are not interchangeable.
+
+## Optional offline tools and labs
+
+The [local-use guide](references/portable-use.md) explains the CLI and optional Blender exercises. The CLI reads the [route cards](assets/route-cards.json), [topic index](assets/production-subjects.tsv) and a local handoff like the [template](templates/handoff.json). It needs no Blender, plug-in or network access. No `.blend` projects, course media or third-party assets are included. The lab scripts do not run on install. With permission, run them in separate fresh Blender processes, into new output paths; they can generate local fixtures for the user. Check Blender version and render-engine requirements first.
+
+- **Geometry:** [mirror seam](scripts/mirror_seam.py), [radial spacing](scripts/radial_study.py), [grommet](scripts/grommet_lab.py), [roof pane](scripts/roof_pane_lab.py).
+- **Scene and animation:** [first labs](scripts/lab.py), [deformation lab](scripts/deformation.py), [lab verifier](scripts/verify_labs.py), [Tide Register builder](scripts/build_tide_register.py) and [checker](scripts/check_tide_register.py), [landing](scripts/landing_lab.py), [pickup](scripts/pickup_lab.py).
+- **Shading and render controls:** [light groups](scripts/light_group_lab.py), [expression](scripts/probe_expression.py), [toon palette](scripts/probe_palette.py), [backlight](scripts/probe_backlight.py), [skin](scripts/probe_skin.py), [rain](scripts/rain_probe.py).
+
+Original workshop by Noa3. [MIT license](references/LICENSE.md) for the original text and code; linked third-party work retains its own attribution and terms.

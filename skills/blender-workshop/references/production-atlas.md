@@ -1,0 +1,43 @@
+# Advanced production atlas
+
+**By Noa3.** Start with the part of the shot that would fail if it were wrong. A horse with a sliding hoof does not need a better hair shader yet; a face that only reads in profile needs another facial pose before it needs pores. This atlas takes you to construction steps, a diagnostic and a correction. Most entries are sourced production recipes, **not** claims that a finished example was rendered. The original studies elsewhere in the workshop retain their own evidence and scope.
+
+| If the brief asks for… | Start here | First thing to judge |
+|---|---|---|
+| Adult body proportions, landmarks, muscles and joints | [Functional anatomy](figure-workflows.md#chapter-human-anatomy) | Hold stature fixed, vary seated height or reach, and compare the same loaded pose. |
+| A full abdomen, lactation-related shape change, or an egg-eating snake | [Deformation by cause](deformation.md#chapter-volume-deformations) | What stays anchored, what moves, what remains after the state/contents have moved on? |
+| MakeHuman morph sliders versus skeletal weights | [MakeHuman morphs](deformation.md#chapter-makehuman-morphs) | Identify the sparse XYZ offsets and the target coefficients before touching any bone weights. |
+| Scalp attachment, hair cards, skin or veins | [Hair and skin in motion](character-surfaces.md#chapter-hair-and-skin) | Track root and tip relative to a posed scalp; mute vessel relief separately from tint. |
+| A figure reference with an unclear rig or shader | [Turn it into a test](deformation.md#chapter-creator-techniques) | Can the unlit, clay and posed views distinguish surface detail from actual displacement? |
+| Anime soft tissue or garment secondary motion | [Weight without a jelly tremor](motion.md#chapter-secondary-motion-direction) | Support and broad follow-through, then a genuinely quiet hold; the previous anime test is not the preferred finish. |
+| Expressive anime faces, stylized bodies or avatars | [Character construction and facial acting](character-surfaces.md#chapter-expressions) | Can one held drawing communicate the thought without an edit doing all the acting? |
+| Koikatsu-family looks, DAZ looks, hyperreal skin, eyes, teeth or bone | [Character material recipes](character-surfaces.md#chapter-character-shaders) | Identify a specific reference material, head angle and light. A product name alone does not specify a shader. |
+| Lens, movement, composition, cinematic coverage, audio, music beats, ads or reels | [Cinematography and delivery](production.md#chapter-cinema-and-delivery) | Does the change in the frame or sound direct attention to the feature the brief actually names? |
+| Human-scale streets, architectural visualization or “next-gen” rendering | [City construction and advanced rendering decisions](spaces.md#chapter-city-and-nextgen) | Walk a continuous route at eye height; name the render target before promising performance or parity. |
+| Landscapes, flora, grass, bonsai, planets, skies, sun or anomalies | [Living worlds and skies](living-worlds.md#chapter-living-worlds) | Scale, habitat and large forms before scattering detail; distinguish a visual invention from physical evidence. |
+| Animals, insects, dogs, horses, birds, dragons, scales, eldritch creatures or micro/macro structure | [Creature construction and scale](living-worlds.md#chapter-creatures-and-scale) | Verify attachment, load-bearing anatomy and motion; state scale and imaging method when it matters. |
+| Automotive, rail, PC parts, peripherals, product design, stands, dioramas, plush or Fumo | [Made objects and soft goods](modeling.md#chapter-made-objects) | Inspect an actual interface: wheel contact, port clearance, seated footprint, seam, socket or support. |
+| Parallax, dirt masks, clear or frosted glass, translucency, paper or posters | [Relief and optical surfaces](materials.md#chapter-optical-surfaces) | Separate texture-space effects, actual geometry, transmitted light and self-emission. |
+| PS1, PS2, remakes, vintage or sci-fi art, spacecraft or robot styles | [Retro and machines](game-assets.md#chapter-retro-and-machines) | Test a recognizable silhouette or hardware-specific artifact independently of the grade. |
+| A Goldberg machine, fluid mixing, tearing cloth or a digital explosion | [Difficult effects](production.md#chapter-difficult-effects) | Disable the cause, inspect what changes, then reopen the cache at a late frame. |
+
+## Build the character, not only its shader
+
+**Anime head and body:** choose front, profile and low three-quarter drawings that agree about the character's jaw, brow, eye line and silhouette. Resolve apparent contradictions in a three-quarter clay turnaround. Keep the head mass, eye opening, painted iris, lids, eyebrows and hair clumps editable separately. Build loops that permit a closed eye, closed mouth and smiling cheek without pinching the corner; design side/rear hair volumes, not only the front fringe. Block torso, pelvis, joints and hands before outfit thickness. Test a speaking pose, blink-plus-smile, head turn and raised arm. For avatars, identify the receiving runtime and its supported expression controls, make a neutral calibration pose, then test linked eyelids and mouth shapes in combination in that runtime. A Blender-only success is not an avatar import test.
+
+**Naturalistic human:** match a licensed/reference-consented person or invent a coherent adult body from proportion and bony landmarks; don't paste surface detail onto an unsupported mannequin. Compare silhouette, joint centers, width/depth and asymmetry in a level neutral camera. Use a subdivision cage/retopology that supports moving joints, then separate broad deformation from pore-scale shading. Match the face at rest and in a demanding smile, bulging cheek, blink and jaw opening. Check the wet eye/teeth against lips and lids before layering skin detail. Compare a broad daylight rig with a raking specular strip. A beautiful still is not evidence of lip seal, eyelid contact, skin motion or likeness throughout an expression.
+
+## Combine disciplines deliberately
+
+* **An anime character steps off a train:** lock foot/platform contact and eye-height scale in the unlit blockout. Stage the reaction shot in a held facial pose. Add secondary motion last; it should change the silhouette once, not keep vibrating as the expression holds. If the audience misses the eyes, simplify the background motion before adding stronger outlines.
+* **A backlit product on a miniature stand:** establish the support and real dimensions. Test the label straight on and at delivery size; sweep a reflection strip across the housing. Toggle the practical light with the material unchanged. If transmission and emission are indistinguishable, run the optical control before grading or adding glare.
+* **A creature fleeing a fictional cloud:** mark the gait, ground contacts and one scale cue first. Test the plume silhouette with the creature switched off, then check their foreground/background relationship with both on. Add sound as a separate timing layer. Don't claim a biological or physical reconstruction when the references support only visual plausibility.
+
+## What evidence buys you
+
+- **Original footage or official preview:** names, framing, poses or timing at stated samples. Does not reveal node graphs, exact rigging or the creator's private process.
+- **Documentation, artist notes or research:** supports a technique in its stated system/version, not a faithful replica or a measured speedup on your machine.
+- **Blender diagnostics:** [smile, squint and one-sided blink](../scripts/probe_expression.py) measures evaluated lid edges; [the two-palette face mask](../scripts/probe_palette.py) checks whether the chosen key direction follows a turning head. [Backlight versus emission](../scripts/probe_backlight.py) and [subsurface thickness](../scripts/probe_skin.py) measure scene-linear pixels. They test specific failures, not a finished character. Version-specific constraints and external alternatives are labeled in their chapters.
+- **Your shot:** agree on its evidence beforehand. A turnaround, clay control, moving highlight, sound sync, cold cache seek or target-device capture proves a different property. Aesthetic approval still belongs to the viewer.
+
+To find an individual topic offline, run `python3 scripts/workshop.py subject` from the skill directory. Add `Fumo`, `PS2`, `Koikatsu`, `Städte` or another displayed term for the chapter and its acceptance check. The older `step` and `card` commands remain available. With no shell, use the chapter links above.

@@ -1,0 +1,8 @@
+{
+  "route": "game",
+  "mode": "manual",
+  "status": "untested",
+  "observation": "I have the brief but no engine session or import log.",
+  "evidence": [],
+  "next_step": "Import the supplied GLB into the target engine; share its measured bounds and pivot."
+}

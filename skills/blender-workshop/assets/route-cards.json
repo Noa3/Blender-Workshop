@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "cards": [
+    {
+      "id": "model",
+      "title": "Shape the silhouette",
+      "choose_when": "The shape or a cutout is wrong even with a flat material.",
+      "actions": [
+        "Block the largest form at its intended dimensions before beveling or shading.",
+        "For a through-hole, cut a real opening; keep the cutter editable.",
+        "Inspect the outline and negative space from two intended views."
+      ],
+      "first_check": "Read the Dimensions fields and compare the longest side with the brief before adding detail.",
+      "check": "Background shows through the opening at delivery size in both views.",
+      "if_failed": "Widen the cutter just enough to keep the gap visible.",
+      "without_tools": "Rotate the blockout yourself and share both views; I cannot verify clearance from a description.",
+      "read_more": "references/modeling.md#chapter-modeling",
+      "example": "Model the handle hole; paint the flush label."
+    },
+    {
+      "id": "architecture",
+      "title": "Frame an architectural bay",
+      "choose_when": "The camera must explain a space, entrance or repeated module.",
+      "actions": [
+        "Mark the exit and set a level camera at the intended eye height.",
+        "Repeat one bay with linked duplicates at a fixed pitch.",
+        "Place a bench for scale and render the view in clay."
+      ],
+      "first_check": "In camera view, the marked exit is visible and the vertical sides of a pier do not converge.",
+      "check": "The exit reads without textures; the bench outline clears the nearest pier.",
+      "if_failed": "Slide the bench sideways until its outline clears the pier.",
+      "without_tools": "Inspect the clay view through the active camera yourself; I cannot verify the projected gap.",
+      "read_more": "references/spaces.md#chapter-scene-and-architecture",
+      "example": "Measure pitch between origins, but clear width between inner faces."
+    },
+    {
+      "id": "material",
+      "title": "Read a surface under light",
+      "choose_when": "The outline works, but the finish or texture scale looks wrong.",
+      "actions": [
+        "Put a beveled sample beside the part under the same grazing light.",
+        "For sheen change only Principled Roughness; for fine relief change only Bump Strength.",
+        "Compare highlight width or pore depth in the same camera crop at delivery size."
+      ],
+      "first_check": "A highlight crosses both the test sample and the part in the same frame.",
+      "check": "The requested finish changes without moving the highlight source or changing the silhouette.",
+      "if_failed": "Return to the original render and isolate roughness from bump.",
+      "without_tools": "Render the two finishes from one camera; I cannot verify the difference without both images.",
+      "read_more": "references/materials.md#chapter-texturing-workflow",
+      "example": "Use Bump for limestone pores; model a chip that breaks the edge."
+    },
+    {
+      "id": "procedural",
+      "title": "Keep a scattered path open",
+      "choose_when": "Placement must obey a rule when a seed changes.",
+      "actions": [
+        "Mark the path as an exclusion band on the terrain.",
+        "Feed the allowed region into Distribute Points on Faces: Selection; instance one plant on the points.",
+        "Compare overhead views at two seeds with density fixed."
+      ],
+      "first_check": "Preview the allowed-region mask before instancing: it is false on the path, true in the bed.",
+      "check": "Count forbidden plant centers at both seeds. If leaf clearance is required, inspect overhang separately.",
+      "if_failed": "Inspect the selection mask first; widen it for overhang only if the centers already pass.",
+      "without_tools": "Switch seeds yourself and inspect both path edges; I cannot verify clearance without the layouts.",
+      "read_more": "references/spaces.md#chapter-environment-generators",
+      "example": "Change seed for another layout; change density for fewer plants."
+    },
+    {
+      "id": "game",
+      "title": "Test a prop after export",
+      "choose_when": "A prop must import or collide correctly in the receiving engine.",
+      "actions": [
+        "Import the exported prop into the target engine and turn on its collision display.",
+        "Mark one spot that must block the player and one spot that must stay passable.",
+        "Run a hit and a miss in the engine; for a moving gate repeat in both poses."
+      ],
+      "first_check": "The engine's debug overlay shows a collision shape at the imported prop, not just the visible mesh.",
+      "check": "A player-sized probe hits the solid region and passes the designated opening. A render is not this test.",
+      "if_failed": "Inspect the collision shape at the failed position, not the render mesh.",
+      "without_tools": "Try the blocked and clear positions in your engine; I cannot verify collision in Blender alone.",
+      "read_more": "references/game-assets.md#chapter-game-art",
+      "example": "Use one hull for a solid crate, multiple hulls for a traversable handle."
+    },
+    {
+      "id": "animation",
+      "title": "Time a looping motion",
+      "choose_when": "The poses work individually but the movement hesitates or pops.",
+      "actions": [
+        "Key the start, extreme and return poses of a swinging arm.",
+        "Add a breakdown pose along the swing arc.",
+        "Play at delivery frame rate across the loop seam."
+      ],
+      "first_check": "Scrub the three keyed frames: the extreme differs, and the last pose matches the first.",
+      "check": "The arm follows the arc without an extra held beat at the seam.",
+      "if_failed": "End playback one frame before the duplicate start pose.",
+      "without_tools": "Play the loop twice yourself; I cannot verify timing from pose stills.",
+      "read_more": "references/motion.md#chapter-animation-workflow",
+      "example": "Keep a repeated pose for an intentional hold; omit the duplicate endpoint from a seamless loop."
+    },
+    {
+      "id": "anime",
+      "title": "Separate cel shadow bands",
+      "choose_when": "The face needs graphic shadow shapes rather than a smooth gradient.",
+      "actions": [
+        "In EEVEE, connect white Diffuse BSDF to Shader to RGB, then Color to Color Ramp Fac.",
+        "Set the ramp to Constant; send its colors through Emission to Material Output.",
+        "Turn the face under a fixed key and inspect adjacent frames at thumbnail size."
+      ],
+      "first_check": "In EEVEE, trace the two links from Diffuse through Shader to RGB into the ramp's Fac input.",
+      "check": "Light and shadow stay distinct on the cheek without a one-frame flash.",
+      "if_failed": "Move the ramp threshold away from the flickering cheek value.",
+      "without_tools": "Scrub the turn yourself in EEVEE; I cannot verify band stability from the node list.",
+      "read_more": "references/character-surfaces.md#chapter-anime",
+      "example": "Use Shader to RGB in EEVEE; test Toon BSDF separately for Cycles."
+    },
+    {
+      "id": "render",
+      "title": "Choose a daylight shadow edge",
+      "choose_when": "Framing is settled; the shot needs harder or softer shadows.",
+      "actions": [
+        "Lock the camera, exposure, Sun direction and strength.",
+        "Render the same floor shadow twice, changing only Sun Angle.",
+        "Compare the shadow edges at the intended image size."
+      ],
+      "first_check": "Save the baseline frame and note which floor edge the shadow crosses before changing any light setting.",
+      "check": "The softer version has a wider transition along the same floor joint.",
+      "if_failed": "Compare a crop where direct sunlight crosses the joint.",
+      "without_tools": "Render both angles yourself and compare the same crop; I cannot verify the edge width without images.",
+      "read_more": "references/lighting.md#chapter-render-choices",
+      "example": "Favor a narrow edge to emphasize repeated bays, a broad edge to quiet the floor pattern."
+    },
+    {
+      "id": "rigging",
+      "title": "Isolate elbow weights",
+      "choose_when": "A joint pinches or drags nearby vertices in a still pose.",
+      "actions": [
+        "Place the elbow pivot in Armature Edit Mode.",
+        "Match deform-bone names to vertex groups on the mesh with its Armature modifier.",
+        "Bend the elbow in Pose Mode and compare with rest."
+      ],
+      "first_check": "Inspect front and side views in rest pose: the hinge sits at the intended bend in both.",
+      "check": "The forearm follows the bone; the upper sleeve stays put away from the joint.",
+      "if_failed": "Remove stray forearm weights from the upper sleeve.",
+      "without_tools": "Pose one elbow yourself and inspect the sleeve; I cannot verify deformation from bone names alone.",
+      "read_more": "references/production.md#chapter-production",
+      "example": "Test a still bend for skinning; retime keys only if the bend itself is clean."
+    },
+    {
+      "id": "composite",
+      "title": "Isolate a correction with a matte",
+      "choose_when": "The rendered shot works except for one object’s color.",
+      "actions": [
+        "Enable the Object Cryptomatte pass in View Layer Properties and render.",
+        "Pick the object with a Cryptomatte node in the Compositor.",
+        "Use its Matte as the Mix factor between the original and corrected images."
+      ],
+      "first_check": "The new Render Result includes the Object Cryptomatte passes for the active view layer.",
+      "check": "At full resolution the object changes color while its neighbor retains the original color.",
+      "if_failed": "Remove the neighbor’s ID from the matte selection.",
+      "without_tools": "Toggle the Mix result against the original yourself; I cannot verify edge spill without the images.",
+      "read_more": "references/production.md#chapter-production",
+      "example": "Mask the sign to brighten its lettering; raise exposure only if the whole shot needs it."
+    }
+  ]
+}

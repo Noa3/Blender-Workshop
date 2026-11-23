@@ -1,0 +1,6 @@
+# Generated Blender projects and backups are not part of the public skill.
+*.blend
+*.blend[0-9]*
+
+__pycache__/
+*.py[cod]
